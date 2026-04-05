@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  
+  --color-primary-warm: #fdfbf7;
+  --color-accent-sun: #f59e0b;
+  --color-soft-peach: #fff7ed;
+  --color-glass-light: rgba(255, 255, 255, 0.7);
+  --color-glass-border-light: rgba(245, 158, 11, 0.2);
+
+  --animate-gradient-x: gradient-x 8s linear infinite;
+
+  @keyframes gradient-x {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+}
+
+@layer base {
+  :root {
+    --bg-main: #fdfbf7;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --card-border: #ffedd5;
+    --accent-color: #f97316;
+    --accent-hover: #ea580c;
+    --font-size-base: 16px;
+  }
+
+  .dark {
+    --bg-main: #0f172a;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --card-border: #334155;
+    --accent-color: #fb923c;
+    --accent-hover: #f97316;
+  }
+
+  .font-size-standard { --font-size-base: 16px; }
+  .font-size-large { --font-size-base: 18px; }
+  .font-size-extra { --font-size-base: 20px; }
+
+  html {
+    font-size: var(--font-size-base);
+    transition: font-size 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+  }
+}
+
+@layer utilities {
+  .glass {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    @apply backdrop-blur-xl shadow-xl;
+  }
+  
+  .glass-dark {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    @apply backdrop-blur-xl shadow-xl;
+  }
+
+  .liquid-bg-warm {
+    background: linear-gradient(-45deg, var(--bg-main), #fff7ed, #fef3c7, #fffbeb);
+    background-size: 400% 400%;
+    animation: liquid 15s ease infinite;
+  }
+
+  .dark .liquid-bg-warm {
+    background: linear-gradient(-45deg, var(--bg-main), #1e293b, #334155, #0f172a);
+  }
+
+  .rainbow-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 animate-gradient-x;
+  }
+
+  .rainbow-border {
+    position: relative;
+    border-radius: inherit;
+  }
+
+  .rainbow-border::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    background: linear-gradient(90deg, #f59e0b, #fbbf24, #fcd34d, #fbbf24, #f59e0b);
+    background-size: 400% 400%;
+    animation: gradient-x 8s linear infinite;
+    border-radius: inherit;
+    opacity: 0.3;
+  }
+
+  @keyframes liquid {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
