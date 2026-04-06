@@ -388,7 +388,7 @@ export default function App() {
                 <div className="glass p-10 rounded-[46px]">
                   <div className="relative mb-10 aspect-[4/5] overflow-hidden rounded-[32px] group shadow-2xl transition-all duration-500 hover:shadow-orange-200/60 hover:-translate-y-2">
                     <img 
-                      src="/qiyi-coach.jpg" 
+                      src="qiyi-coach.jpg" 
                       alt="Qi Qi Coach" 
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       onError={(e) => {
